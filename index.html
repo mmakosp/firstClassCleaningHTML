@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First Class Cleaning Service</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Smooth scrolling for anchor links */
+    html {
+      scroll-behavior: smooth;
+    }
+    /* Animation for service cards */
+    .service-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+    /* Fade-in animation for hero and about sections */
+    .hero-content, .about-content {
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    /* Testimonial carousel */
+    .carousel {
+      display: flex;
+      overflow-x: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+    .carousel-item {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      transition: transform 0.5s ease;
+    }
+    /* Live chat button */
+    .live-chat {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 50;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    /* Before/After slider */
+    .before-after {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.5rem;
+    }
+    .before-after img {
+      width: 100%;
+      height: auto;
+    }
+    .slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: ew-resize;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 text-gray-800 font-sans">
+
+  <!-- NAV -->
+  <header class="bg-blue-600 shadow-sm sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 text-white">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-md bg-blue-800 flex items-center justify-center text-white font-bold">FC</div>
+          <div>
+            <h1 class="text-lg font-semibold">First Class Cleaning Service ✨</h1>
+            <p class="text-xs text-blue-100">Home • Laundry • Windows • More Fun!</p>
+          </div>
+        </div>
+
+        <!-- Desktop Menu -->
+        <nav id="desktop-menu" class="hidden md:flex items-center space-x-6 text-sm">
+          <a href="#services" class="hover:text-yellow-200 transition-colors">Services</a>
+          <a href="#about" class="hover:text-yellow-200 transition-colors">About</a>
+          <a href="#pricing" class="hover:text-yellow-200 transition-colors">Pricing</a>
+          <a href="#testimonials" class="hover:text-yellow-200 transition-colors">Testimonials</a>
+          <a href="#contact" class="hover:text-yellow-200 transition-colors">Contact</a>
+        </nav>
+
+        <div class="hidden md:block">
+          <a href="https://wa.me/+27739922202?text=I%20would%20like%20to%20book%20a%20cleaning%20service" class="inline-flex items-center px-4 py-2 rounded-md bg-yellow-400 text-blue-900 text-sm font-medium hover:bg-yellow-500 transition-colors">Book Now 🎉</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="inline-flex items-center px-3 py-2 rounded-md bg-yellow-400 text-blue-900 text-sm focus:outline-none" aria-label="Toggle mobile menu">
+            Menu
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <nav id="mobile-menu" class="hidden md:hidden flex-col space-y-2 mt-2 text-sm text-white">
+        <a href="#services" class="px-3 py-2 hover:bg-blue-500 rounded transition-colors">Services</a>
+        <a href="#about" class="px-3 py-2 hover:bg-blue-500 rounded transition-colors">About</a>
+        <a href="#pricing" class="px-3 py-2 hover:bg-blue-500 rounded transition-colors">Pricing</a>
+        <a href="#testimonials" class="px-3 py-2 hover:bg-blue-500 rounded transition-colors">Testimonials</a>
+        <a href="#contact" class="px-3 py-2 hover:bg-blue-500 rounded transition-colors">Contact</a>
+        <a href="https://wa.me/+27739922202?text=I%20would%20like%20to%20book%20a%20cleaning%20service" class="px-3 py-2 rounded-md bg-yellow-400 text-blue-900 text-sm hover:bg-yellow-500 transition-colors">Book Now 🎉</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="bg-blue-100 relative overflow-hidden">
+      <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover opacity-20">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-cleaning-the-living-room-116-medium.mp4" type="video/mp4">
+      </video>
+      <div class="relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid gap-10 grid-cols-1 md:grid-cols-2 items-center">
+          <div class="hero-content">
+            <h2 class="text-4xl md:text-5xl font-extrabold leading-tight text-blue-900">Affordable, Reliable, Spotless Cleaning 😊</h2>
+            <p class="mt-4 text-lg text-blue-800">Professional home cleaning, laundry, move-in/out, windows, and more. Starting at just R350. Let's make your space sparkle! ✨</p>
+
+            <div class="mt-8 flex items-center space-x-4">
+              <a href="https://wa.me/+27739922202?text=I%20would%20like%20to%20book%20a%20cleaning%20service" class="px-6 py-3 rounded-md bg-blue-600 text-white font-medium shadow hover:bg-blue-700 transition-colors">Get a Quote 🚀</a>
+              <a href="#services" class="px-6 py-3 rounded-md border border-blue-300 text-sm text-blue-900 hover:bg-blue-50 transition-colors">View Services</a>
+            </div>
+          </div>
+
+          <div class="relative">
+            <img src="https://i.postimg.cc/zf5kMQJm/pexels-cottonbro-4107284.jpg" alt="Cleaning service professional at work" class="rounded-lg shadow-lg w-full object-cover h-80 md:h-96" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h3 class="text-3xl font-bold text-blue-900 text-center">About Us 🧼</h3>
+      <p class="text-blue-700 mt-3 text-center max-w-2xl mx-auto">We’re your Joburg North cleaning crew, bringing sparkle and smiles to every home! 😄</p>
+
+      <div class="mt-8 grid gap-10 grid-cols-1 md:grid-cols-2 items-center">
+        <div class="about-content">
+          <h4 class="text-2xl font-semibold text-blue-900">Who We Are</h4>
+          <p class="mt-4 text-blue-800">First Class Cleaning Service is a local, family-run business in Joburg North, started in 2020 with a mission to make homes shine without breaking the bank. From R350, we offer professional home cleaning, laundry, move-in/out services, windows, and more. Our team loves turning chaos into clean, with a sprinkle of fun! ✨</p>
+          <p class="mt-4 text-blue-800">Fun Fact: Our crew once cleaned a house so fast, the cat thought we were magic! 🐾 Want to see the magic? Book today!</p>
+          <a href="https://wa.me/+27739922202?text=I%20would%20like%20to%20book%20a%20cleaning%20service" class="mt-6 inline-flex px-6 py-3 rounded-md bg-yellow-400 text-blue-900 font-medium hover:bg-yellow-500 transition-colors">Book Your Sparkle 🚀</a>
+        </div>
+        <div class="relative">
+          <img src="https://i.postimg.cc/sx3jpFzw/20250925-0040-Cleaning-in-Joburg-North-simple-compose-01k5yy2n22fwwrza9h44xc53q1.png" alt="Our cleaning team" class="rounded-lg shadow-lg w-full object-cover h-80 md:h-96" />
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h3 class="text-3xl font-bold text-blue-900 text-center">Our Services 🧼</h3>
+      <p class="text-blue-700 mt-3 text-center max-w-2xl mx-auto">Trusted cleaning solutions tailored to your needs, delivered with care and a smile! 😄</p>
+
+      <div class="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <article class="bg-white rounded-lg p-6 shadow-sm border border-blue-100 service-card">
+          <div class="before-after mb-4">
+            <img src="https://i.postimg.cc/CKN4V41R/pexels-karolina-grabowska-4239069.jpg" class="before" alt="Before home cleaning">
+            <img src="https://i.postimg.cc/CKN4V41R/pexels-karolina-grabowska-4239069.jpg" class="after" alt="After home cleaning" style="clip-path: inset(0 50% 0 0);">
+            <div class="slider" style="left: 50%;"></div>
+          </div>
+          <h4 class="font-semibold text-blue-900 text-lg">Home Cleaning</h4>
+          <p class="mt-2 text-sm text-blue-700">Keep your home sparkling clean with our thorough and reliable service. Magic happens! ✨</p>
+        </article>
+
+        <article class="bg-white rounded-lg p-6 shadow-sm border border-blue-100 service-card">
+          <div class="before-after mb-4">
+            <img src="https://i.postimg.cc/d1NmhtGv/pexels-liliana-drew-9462167.jpg" class="before" alt="Before laundry">
+            <img src="https://i.postimg.cc/d1NmhtGv/pexels-liliana-drew-9462167.jpg" class="after" alt="After laundry" style="clip-path: inset(0 50% 0 0);">
+            <div class="slider" style="left: 50%;"></div>
+          </div>
+          <h4 class="font-semibold text-blue-900 text-lg">Laundry Services</h4>
+          <p class="mt-2 text-sm text-blue-700">Convenient and professional laundry solutions for your household. Fresh and fun! 🧺</p>
+        </article>
+
+        <article class="bg-white rounded-lg p-6 shadow-sm border border-blue-100 service-card">
+          <div class="before-after mb-4">
+            <img src="https://i.postimg.cc/qqtcyVGK/pexels-liliana-drew-9462307.jpg" class="before" alt="Before move in/out">
+            <img src="https://i.postimg.cc/qqtcyVGK/pexels-liliana-drew-9462307.jpg" class="after" alt="After move in/out" style="clip-path: inset(0 50% 0 0);">
+            <div class="slider" style="left: 50%;"></div>
+          </div>
+          <h4 class="font-semibold text-blue-900 text-lg">Move In & Out Clean Up</h4>
+          <p class="mt-2 text-sm text-blue-700">Perfect for tenants and landlords, ensuring a spotless property. Stress-free! 🏠</p>
+        </article>
+
+        <article class="bg-white rounded-lg p-6 shadow-sm border border-blue-100 service-card">
+          <div class="before-after mb-4">
+            <img src="https://i.postimg.cc/Kz8DcgkJ/pexels-liliana-drew-9462651.jpg" class="before" alt="Before window cleaning">
+            <img src="https://i.postimg.cc/Kz8DcgkJ/pexels-liliana-drew-9462651.jpg" class="after" alt="After window cleaning" style="clip-path: inset(0 50% 0 0);">
+            <div class="slider" style="left: 50%;"></div>
+          </div>
+          <h4 class="font-semibold text-blue-900 text-lg">Windows & More</h4>
+          <p class="mt-2 text-sm text-blue-700">Crystal-clear windows and specialized cleaning services. Shine bright! ☀️</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="bg-green-50 py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h3 class="text-3xl font-bold text-blue-900 text-center">Pricing 💰</h3>
+        <p class="text-blue-700 mt-3 text-center max-w-2xl mx-auto">Transparent and affordable pricing for all our cleaning services. Value-packed!</p>
+
+        <div class="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="bg-white rounded-lg p-6 shadow-sm border border-blue-100 service-card">
+            <h4 class="font-semibold text-blue-900 text-lg">Basic Home Cleaning</h4>
+            <p class="mt-2 text-2xl font-bold text-green-600">R350</p>
+            <p class="mt-2 text-sm text-blue-700">General cleaning for small homes or apartments (up to 100m²). Budget-friendly sparkle!</p>
+          </article>
+
+          <article class="bg-white rounded-lg p-6 shadow-sm border border-blue-100 service-card">
+            <h4 class="font-semibold text-blue-900 text-lg">Laundry Service</h4>
+            <p class="mt-2 text-2xl font-bold text-green-600">Varies</p>
+            <p class="mt-2 text-sm text-blue-700">Wash, dry, and fold for your laundry. Contact us for a custom quote. Fresh vibes!</p>
+          </article>
+
+          <article class="bg-white rounded-lg p-6 shadow-sm border border-blue-100 service-card">
+            <h4 class="font-semibold text-blue-900 text-lg">Move In/Out Cleaning</h4>
+            <p class="mt-2 text-2xl font-bold text-green-600">Varies</p>
+            <p class="mt-2 text-sm text-blue-700">Deep cleaning for properties. Get your personalized quote today!</p>
+          </article>
+
+          <article class="bg-white rounded-lg p-6 shadow-sm border border-blue-100 service-card">
+            <h4 class="font-semibold text-blue-900 text-lg">Window Cleaning</h4>
+            <p class="mt-2 text-2xl font-bold text-green-600">Varies</p>
+            <p class="mt-2 text-sm text-blue-700">Interior and exterior window cleaning. Let's make it crystal clear!</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-yellow-50">
+      <h3 class="text-3xl font-bold text-blue-900 text-center">What Our Clients Say ⭐⭐⭐⭐⭐</h3>
+      <p class="text-blue-700 mt-3 text-center max-w-2xl mx-auto">Hear from our happy customers – real stories, real smiles! 😊</p>
+
+      <div class="mt-8 relative">
+        <div id="carousel" class="carousel">
+          <div class="carousel-item">
+            <div class="bg-white rounded-lg p-6 shadow-sm border border-blue-100 text-center">
+              <p class="text-blue-700 italic">"First Class Cleaning transformed my home! It's never been this spotless. Love the team! 🎉"</p>
+              <div class="flex justify-center mt-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+              <p class="mt-2 font-semibold text-blue-900">Sarah M.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="bg-white rounded-lg p-6 shadow-sm border border-blue-100 text-center">
+              <p class="text-blue-700 italic">"Their laundry service is a lifesaver. Professional and affordable! Fresh sheets every time! 🧺"</p>
+              <div class="flex justify-center mt-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+              <p class="mt-2 font-semibold text-blue-900">John K.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="bg-white rounded-lg p-6 shadow-sm border border-blue-100 text-center">
+              <p class="text-blue-700 italic">"Perfect move-in cleaning for my new apartment. Highly recommend! So easy and fun! 🏠"</p>
+              <div class="flex justify-center mt-4 text-yellow-400">⭐⭐⭐⭐⭐</div>
+              <p class="mt-2 font-semibold text-blue-900">Lisa T.</p>
+            </div>
+          </div>
+        </div>
+        <button id="prev" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-blue-600 text-white px-3 py-1 rounded-full hover:bg-blue-700">←</button>
+        <button id="next" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-blue-600 text-white px-3 py-1 rounded-full hover:bg-blue-700">→</button>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="bg-blue-600 py-20 px-6 text-center text-white">
+      <h2 class="text-4xl font-bold mb-6">Get in Touch 📞</h2>
+      <p class="text-lg mb-6 max-w-2xl mx-auto">Contact us via WhatsApp or fill out the form below to request a quote or ask any questions. We're here to help with a smile! 😄</p>
+      <div class="text-2xl font-semibold mb-8">
+        <p>📱 <a href="tel:+27739922202" class="hover:text-yellow-200 transition-colors">073 992 2202</a></p>
+      </div>
+
+      <div class="max-w-md mx-auto">
+        <form id="contact-form" class="space-y-4">
+          <input type="text" id="name" placeholder="Your Name" class="w-full px-4 py-2 rounded-md bg-blue-500 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-yellow-400" aria-label="Your name" required>
+          <input type="email" id="email" placeholder="Your Email" class="w-full px-4 py-2 rounded-md bg-blue-500 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-yellow-400" aria-label="Your email" required>
+          <textarea id="message" placeholder="Your Message" rows="4" class="w-full px-4 py-2 rounded-md bg-blue-500 text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-yellow-400" aria-label="Your message" required></textarea>
+          <button type="submit" class="w-full px-6 py-3 rounded-md bg-yellow-400 text-blue-900 font-medium hover:bg-yellow-500 transition-colors">Send Message 🚀</button>
+          <p id="form-message" class="text-sm text-yellow-200 hidden"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- LIVE CHAT BUTTON -->
+    <a href="https://wa.me/+27739922202?text=I%20have%20a%20question%20about%20your%20services" class="live-chat inline-flex items-center px-4 py-2 rounded-full bg-green-500 text-white font-medium hover:bg-green-600 transition-colors shadow-lg">
+      <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10h5v-2h-5c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8v1.5c0 .83-.67 1.5-1.5 1.5S17 14.33 17 13.5V12c0-3.31-2.69-6-6-6h-1v2h1c2.21 0 4 1.79 4 4v1.5c0 1.38 1.12 2.5 2.5 2.5S20 14.88 20 13.5V12c0-5.52-4.48-10-10-10z"/>
+      </svg>
+      Chat with Us 😊
+    </a>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-white text-center py-8">
+    <p>&copy; 2025 First Class Cleaning Service. All rights reserved. Cleaning with joy! ✨</p>
+  </footer>
+
+  <!-- JS for Mobile Menu and Interactive Features -->
+  <script>
+    // Mobile Menu
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('flex');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+      });
+    });
+
+    // Testimonial Carousel
+    const carousel = document.getElementById('carousel');
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+    let currentIndex = 0;
+
+    function scrollCarousel(direction) {
+      const items = carousel.querySelectorAll('.carousel-item');
+      currentIndex = (currentIndex + direction + items.length) % items.length;
+      carousel.scrollTo({
+        left: currentIndex * carousel.offsetWidth,
+        behavior: 'smooth'
+      });
+    }
+
+    prevButton.addEventListener('click', () => scrollCarousel(-1));
+    nextButton.addEventListener('click', () => scrollCarousel(1));
+
+    // Auto-scroll carousel every 5 seconds
+    setInterval(() => scrollCarousel(1), 5000);
+
+    // Contact Form Validation
+    const form = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (name && email && message) {
+        formMessage.classList.remove('hidden');
+        formMessage.textContent = 'Thank you! Your message has been sent. We\'ll sparkle back soon! ✨';
+        formMessage.classList.remove('text-red-300');
+        formMessage.classList.add('text-green-300');
+        form.reset();
+        setTimeout(() => {
+          formMessage.classList.add('hidden');
+        }, 3000);
+      } else {
+        formMessage.classList.remove('hidden');
+        formMessage.textContent = 'Please fill in all fields. Let\'s make it easy! 😊';
+        formMessage.classList.remove('text-green-300');
+        formMessage.classList.add('text-red-300');
+      }
+    });
+
+    // Before/After Slider
+    document.querySelectorAll('.before-after').forEach(container => {
+      const slider = container.querySelector('.slider');
+      let isDragging = false;
+
+      slider.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        e.preventDefault();
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const width = rect.width;
+        let percentage = (x / width) * 100;
+        percentage = Math.max(0, Math.min(100, percentage));
+        slider.style.left = percentage + '%';
+        container.querySelector('.after').style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+      });
+
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
+      });
+    });
+  </script>
+
+</body>
+</html>
